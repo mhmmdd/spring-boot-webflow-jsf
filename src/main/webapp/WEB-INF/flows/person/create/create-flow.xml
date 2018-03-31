@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+    <var name="personForm" class="com.example.springbootwebflowjsf.beans.PersonFormBean"/>
+
+    <view-state id="create" model="personForm" view="create.xhtml">
+        <transition on="save" to="saveAction"/>
+    </view-state>
+
+    <action-state id="saveAction">
+        <evaluate expression="personController.savePerson(personForm)" />
+        <transition on="success" to="back"/>
+    </action-state>
+
+    <end-state id="back"/>
+</flow>
